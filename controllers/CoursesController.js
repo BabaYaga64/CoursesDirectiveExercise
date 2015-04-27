@@ -8,4 +8,8 @@ courseRoster.controller('CoursesCtrl', function CoursesCtrl($scope, CoursesFacto
   }
 
   $scope.ctrlCourseName = "History of Yerba";
+
+  $scope.ctrlAlert = function(message) {
+      alert(message);
+  }
 });

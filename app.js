@@ -31,7 +31,7 @@ courseRoster.directive("enter", function() {
         var temp;
         element.bind("mouseenter", function() {
             temp = element.text();
-            element.text("What's your favorite course this semester?");
+            element.text("Epicodus!1!!");
         })
         element.bind("mouseleave", function() {
             element.text(temp);
@@ -70,5 +70,14 @@ courseRoster.directive("sampleCourse", function () {
             courseName: "@"
         },
         template: "<div>{{ courseName }}</div>"
+    }
+});
+
+courseRoster.directive("alertUser", function() {
+    return {
+        scope: {
+            alert: "&"
+        },
+        template: "<input type='text' ng-model='value'><button class='btn' ng-click='alert({message:value})'>DO IT</button>"
     }
 });
