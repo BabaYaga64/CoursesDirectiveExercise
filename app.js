@@ -18,3 +18,26 @@ courseRoster.config(function($stateProvider) {
     controller: 'StudentsCtrl'
   });
 });
+
+courseRoster.directive("welcome", function() {
+    return {
+        restrict: "E",
+        template: "<h1>Welcome to the Course Roster Application</h1>"
+    }
+});
+
+courseRoster.directive("enter", function() {
+    return function(scope, element) {
+        element.bind("mouseenter", function() {
+            element.html("<h1>What's your favorite course this semester?</h1>");
+        });
+    }
+});
+
+courseRoster.directive("leave", function() {
+    return function(scope, element) {
+        element.bind("mouseleave", function() {
+            element.html("<h1>Epicodus!</h1>");
+        });
+    }
+});
