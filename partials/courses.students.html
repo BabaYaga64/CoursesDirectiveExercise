@@ -1,7 +1,7 @@
 <div ng-show="course.students.length">
   <h2>Student List for {{ course.name }}</h2>
   <ul>
-    <li ng-repeat="item in course.students">
+    <li ng-repeat="item in course.students" debug>
       {{ item.name }}
     </li>
   </ul>

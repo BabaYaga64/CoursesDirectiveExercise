@@ -23,7 +23,7 @@ courseRoster.directive("welcome", function() {
     return {
         restrict: "A",
         template: "Welcome to the Course Roster System"
-    }
+    };
 });
 
 courseRoster.directive("enter", function() {
@@ -32,11 +32,11 @@ courseRoster.directive("enter", function() {
         element.bind("mouseenter", function() {
             temp = element.text();
             element.text("Epicodus!1!!");
-        })
+        });
         element.bind("mouseleave", function() {
             element.text(temp);
-        })
-    }
+        });
+    };
 });
 
 // courseRoster.directive("leave", function() {
@@ -51,26 +51,26 @@ courseRoster.directive("puff", function() {
     return function(scope, element, attrs) {
         element.bind("mouseenter", function() {
             element.addClass(attrs.puff);
-        })
-    }
+        });
+    };
 });
 
 courseRoster.directive("puff", function() {
     return function(scope, element, attrs) {
         element.bind("mouseleave", function() {
             element.removeClass(attrs.puff);
-        })
-    }
+        });
+    };
 });
 
 
-courseRoster.directive("sampleCourse", function () {
+courseRoster.directive("sampleCourse", function() {
     return {
         scope: {
             courseName: "@"
         },
         template: "<div>{{ courseName }}</div>"
-    }
+    };
 });
 
 courseRoster.directive("alertUser", function() {
@@ -79,5 +79,19 @@ courseRoster.directive("alertUser", function() {
             alert: "&"
         },
         template: "<input type='text' ng-model='value'><button class='btn' ng-click='alert({message:value})'>DO IT</button>"
-    }
+    };
+});
+
+courseRoster.directive("debug", function($compile) {
+    return {
+        terminal: true,
+        priority: 1000000,
+        link: function(scope, element) {
+            var clone = element.clone();
+            element.attr("style", "color:#ff00ff");
+            clone.removeAttr("debug");
+            var clonedElement = $compile(clone)(scope);
+            element.after(clonedElement);
+        }
+    };
 });
