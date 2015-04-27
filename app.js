@@ -21,23 +21,54 @@ courseRoster.config(function($stateProvider) {
 
 courseRoster.directive("welcome", function() {
     return {
-        restrict: "E",
-        template: "<h1>Welcome to the Course Roster Application</h1>"
+        restrict: "A",
+        template: "Welcome to the Course Roster System"
     }
 });
 
 courseRoster.directive("enter", function() {
     return function(scope, element) {
+        var temp;
         element.bind("mouseenter", function() {
-            element.html("<h1>What's your favorite course this semester?</h1>");
-        });
+            temp = element.text();
+            element.text("What's your favorite course this semester?");
+        })
+        element.bind("mouseleave", function() {
+            element.text(temp);
+        })
     }
 });
 
-courseRoster.directive("leave", function() {
-    return function(scope, element) {
+// courseRoster.directive("leave", function() {
+//     return function(scope, element) {
+//         element.bind("mouseleave", function() {
+//             element.text("<h4>Epicodus!</h4>");
+//         })
+//     }
+// });
+
+courseRoster.directive("puff", function() {
+    return function(scope, element, attrs) {
+        element.bind("mouseenter", function() {
+            element.addClass(attrs.puff);
+        })
+    }
+});
+
+courseRoster.directive("puff", function() {
+    return function(scope, element, attrs) {
         element.bind("mouseleave", function() {
-            element.html("<h1>Epicodus!</h1>");
-        });
+            element.removeClass(attrs.puff);
+        })
+    }
+});
+
+
+courseRoster.directive("sampleCourse", function () {
+    return {
+        scope: {
+            courseName: "@"
+        },
+        template: "<div>{{ courseName }}</div>"
     }
 });

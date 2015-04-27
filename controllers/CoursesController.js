@@ -6,4 +6,6 @@ courseRoster.controller('CoursesCtrl', function CoursesCtrl($scope, CoursesFacto
     $scope.CoursesFactory.addCourse(name);
     $scope.courseName = null;
   }
+
+  $scope.ctrlCourseName = "History of Yerba";
 });
